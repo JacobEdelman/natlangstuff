@@ -1,30 +1,19 @@
 function replacer(a){
+    a=" "+a;
     a = a.replace(/ plus /g," + ");
 	a = a.replace(/ minus /g," - ");
 	a = a.replace(/ times /g," * ");
 	a = a.replace(/ divided by /g," / ");
 	a = a.replace(/as long as /g,"while ");
-	a = a.replace(/\nset /g,"");
-	a =a.replace(/\nlet /g, "");
-	a =a.replace(/\nchange /g, "");
-	a =a.replace(/\nas long as /g, "\nwhile ");
-	a = a.replace(/\tset /g,"");
-	a =a.replace(/\tlet /g, "");
-	a =a.replace(/\tchange /g, "");
-	a =a.replace(/\tas long as /g, "\twhile ")
-	a = a.replace(/ set /g,"");
-	a =a.replace(/ let /g, "");
-	a =a.replace(/ change /g, "");
-	a =a.replace(/ as long as /g, " while ");
-	a = a.replace(/^set /g,"");
-	a =a.replace(/^let /g, "");
-	a =a.replace(/^change /g, "");
-	a =a.replace(/^as long as /g, " while ");
+	a = a.replace(/\sset /g,"");
+	a =a.replace(/\slet /g, "");
+	a =a.replace(/\schange /g, "");
+	a =a.replace(/\sas long as /g, "\nwhile ");
 	a =a.replace(/ equal to /g, "=");
     	a =a.replace(/ equals /g, "=");
 	a =a.replace(/ to /g, "=");
 	a =a.replace(/ is in /g, " in ");
-	a =a.replace(/ is equal to /g, "==");
+	a =a.replace(/ is equal to /g, "=");
 	a =a.replace(/ is greater than or equal to/g, ">=");
 	a =a.replace(/ is greater than /g, ">");
 	a =a.replace(/ is less than or equal to /g, "<=");
@@ -34,53 +23,67 @@ function replacer(a){
 	//aloks stuff here(a is now a list)
 	var tempa = "";
 	for(var i in a){
-		if(a[i].indexOf("loop")>-1){
-			var stmt=a[i].match(/loop(.*)\S/);
+		if(a[i].indexOf(/\sloop\s/)>-1){
+			var stmt=a[i].match(/\sloop\s(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
-				var stmt=a[i].match(/loop(.*)\S/)[0];
-				var args=stmt.replace("loop","").replace(":","");
+				var stmt=a[i].match(/\sloop\s(.*)\S/)[0];
+				var bit=a[i].match(/\sloop\s/).index+1
+				stmt2=stmt.substring(1,bit)+stmt.substring(bit+4);
+				var args=stmt2.replace(":","");
 				a[i]=a[i].replace(stmt,"for iiii in range("+args+"):");
 			}
 		}
-		if(a[i].indexOf("for")>-1){
-			var stmt=a[i].match(/for(.*)\S/);
+		if(a[i].indexOf(/\sfor\s/)>-1){
+			var stmt=a[i].match(/\sfor\s(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
-				var args=stmt.replace("for","").replace(":","");
+				var stmt=a[i].match(/\sfor\s(.*)\S/)[0];
+				var bit=a[i].match(/\sfor\s/).index+1
+				stmt2=stmt.substring(1,bit)+stmt.substring(bit+3);
+				var args=stmt2.replace(":","");
 				a[i]=a[i].replace(stmt,"for "+args+":");
 			}
 		}
-		if(a[i].indexOf("until")>-1){
+		if(a[i].indexOf(/\suntil\s/)>-1){
                         if(a[i].match(/[^=]=[^=]/)){
 				a[i].replace("=","==");
 			}
-			var stmt=a[i].match(/until(.*)\S/);
+			var stmt=a[i].match(/\suntil\s(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
-				var args=stmt.replace("until","").replace(":","");
+				var stmt=a[i].match(/\suntil\s(.*)\S/)[0];
+				var bit=a[i].match(/\suntil\s/).index+1;
+				stmt=stmt2.substring(1,bit)+stmt.substring(bit+5);
+				var args=stmt2.replace(":","");
 				a[i]=a[i].replace(stmt,"while not ("+args+"):");
 			}
 		}
-		if(a[i].indexOf("while")>-1){
+		if(a[i].indexOf(/\swhile\s/)>-1){
                         if(a[i].match(/[^=]=[^=]/)){
 				a[i].replace("=","==");
 			}
 			var stmt=a[i].match(/while(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
-				var args=stmt.replace("while","").replace(":","");
+				var stmt=a[i].match(/\swhile\s(.*)\S/)[0];
+				var bit=a[i].match(/\swhile\s/).index+1l
+				stmt2=stmt.substring(1,bit)+stmt.substring(bit+5);
+				var args=stmt2.replace(":","");
 				a[i]=a[i].replace(stmt,"while ("+args+"):");
 			}
 		}
-		if(a[i].indexOf("if")>-1){
+		if(a[i].indexOf(/\sif/)>-1){
                         if(a[i].match(/[^=]=[^=]/)){
 				a[i].replace("=","==");
 			}
-			var stmt=a[i].match(/if(.*)\S/);
+			var stmt=a[i].match(/\sif\s(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
-				var args=stmt.replace("if","").replace(":","");
+				var stmt=a[i].match(/\sif\s(.*)\S/)[0];
+				var bit=a[i].match(/\sif\s/).index+1;
+				stmt2=stmt.substring(1,bit)+stmt.substring(bit+2);
+				var args=stmt2.replace(":","");
 				a[i]=a[i].replace(stmt,"if ("+args+"):");
 			}
 		}
