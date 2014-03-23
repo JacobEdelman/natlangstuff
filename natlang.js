@@ -1,4 +1,3 @@
-function re
 function replacer(a){
 	a=a.replace(/plus/g,"+");
 }
@@ -13,5 +12,5 @@ function change(a){
 	    a=a.replace("@",b[i][0]);
 	}
 
-	return(a)
+	return(a);
 }

@@ -1,6 +1,6 @@
 function re
 function replacer(a){
-	a=a.replaceall(/plus/g,"+");
+	a=a.replace(/plus/g,"+");
 }
 function change(a){
 	var b=[];
@@ -13,5 +13,5 @@ function change(a){
 	    a=a.replace("@",b[i][0]);
 	}
 
-	return(a)
+	return(a);
 }
