@@ -1,10 +1,14 @@
+var a='4 plus "3 plus 2" plus "hi " ';
 
-a='4 plus (3 plus 2) plus "hi " '
-a=a.match(/\"(.*?)"/)
-while (a.indexOf('"')>-1)
-    a = a.replace(/\"(.*?)"/,"@");
-for(i in a.match("@")
+var b=[];
+
+while (a.indexOf('"')>-1){
+    b.push(a.match(/\"(.*?)"/));
+    a = a.replace(/\"(.*?)"/,"@");}
     
-    
+for(var i in b){
+    console.log(a);
+    a=a.replace("@",b[i][0]);
+}
 
-
+console.log(a)
