@@ -4,6 +4,7 @@ function replacer(a){
 	a = a.replace(/ minus /g," - ");
 	a = a.replace(/ times /g," * ");
 	a = a.replace(/ divided by /g," / ");
+	a = a.replace(/ mod /g, " % ");
 	a = a.replace(/as long as /g,"while ");
 	a = a.replace(/\sset /g,"");
 	a =a.replace(/\slet /g, "");
