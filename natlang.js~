@@ -43,6 +43,14 @@ function replacer(a){
 				a[i]=a[i].replace(stmt,"for iiii in range("+args+"):");
 			}
 		}
+		if(a[i].indexOf("for")>-1){
+			var stmt=a[i].match(/for(.*)\S/);
+			if(stmt){
+				stmt=stmt[0];
+				var args=stmt.replace("for","").replace(":","");
+				a[i]=a[i].replace(stmt,"for "+args+":");
+			}
+		}
 		if(a[i].indexOf("until")>-1){
                         if(a[i].match(/[^=]=[^=]/)){
 				a[i].replace("=","==");
