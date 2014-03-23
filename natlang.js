@@ -1,14 +1,17 @@
-var a='4 plus "3 plus 2" plus "hi " ';
-
-var b=[];
-
-while (a.indexOf('"')>-1){
-    b.push(a.match(/\"(.*?)"/));
-    a = a.replace(/\"(.*?)"/,"@");}
-    
-for(var i in b){
-    console.log(a);
-    a=a.replace("@",b[i][0]);
+function re
+function replacer(a){
+	a=a.replace(/plus/g,"+");
 }
+function change(a){
+	var b=[];
 
-console.log(a)
+	while (a.indexOf('"')>-1){
+	    b.push(a.match(/\"(.*?)"/));
+	    a = a.replace(/\"(.*?)"/,"@");}
+	a=replacer(a);
+	for(var i in b){
+	    a=a.replace("@",b[i][0]);
+	}
+
+	return(a)
+}
