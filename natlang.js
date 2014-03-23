@@ -1,5 +1,6 @@
 function replacer(a){
 	a=a.replace(/plus/g,"+");
+	return(a);
 }
 function change(a){
 	var b=[];
