@@ -13,7 +13,6 @@ function replacer(a){
 			var args=stmt.replace("loop","");
 			a[i]=a[i].replace(stmt,"for iiii in range("+args+"):");
 		}
-		tempa+=i+"\n";
 		tempa+=a[i]+"\n";
 	}
 	
