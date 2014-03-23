@@ -6,7 +6,12 @@ function replacer(a){
 	a = a.replace(/as long as /g,"while ");
 	a = a.replace(/set /g,"");
 	a =a.replace(/let /g, "");
-	a =a.replace(/equal to /g, "=");
+	a =a.replace(/ is equal to /g, "==");
+	a =a.replace(/ equal to /g, "==");
+	a =a.replace(/ is greater than or equal to/g, ">=");
+	a =a.replace(/ is greater than /g, ">");
+	a =a.replace(/ is less than or equa to /g, "<=");
+	a =a.replace(/ is less than /g, "<");
     
 	a = a.split("\n");
 	//aloks stuff here(a is now a list)
