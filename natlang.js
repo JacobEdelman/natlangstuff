@@ -10,24 +10,37 @@ function replacer(a){
 	for(var i in a){
         console.log(a[i]);
 		if(a[i].indexOf("loop")>-1){
-			var stmt=a[i].match(/loop(.*)\S/)[0];
-			var args=stmt.replace("loop","").replace(":","");
-			a[i]=a[i].replace(stmt,"for iiii in range("+args+"):");
+			var stmt=a[i].match(/loop(.*)\S/);
+			if(stmt){
+				stmt=stmt[0];
+				var stmt=a[i].match(/loop(.*)\S/)[0];
+				var args=stmt.replace("loop","").replace(":","");
+				a[i]=a[i].replace(stmt,"for iiii in range("+args+"):");
+			}
 		}
 		if(a[i].indexOf("until")>-1){
-			var stmt=a[i].match(/until(.*)\S/)[0];
-			var args=stmt.replace("until","").replace(":","");
-			a[i]=a[i].replace(stmt,"while not ("+args+"):");
+			var stmt=a[i].match(/until(.*)\S/);
+			if(stmt){
+				stmt=stmt[0];
+				var args=stmt.replace("until","").replace(":","");
+				a[i]=a[i].replace(stmt,"while not ("+args+"):");
+			}
 		}
 		if(a[i].indexOf("while")>-1){
-			var stmt=a[i].match(/while(.*)\S/)[0];
-			var args=stmt.replace("while","").replace(":","");
-			a[i]=a[i].replace(stmt,"while ("+args+"):");
+			var stmt=a[i].match(/while(.*)\S/);
+			if(stmt){
+				stmt=stmt[0];
+				var args=stmt.replace("while","").replace(":","");
+				a[i]=a[i].replace(stmt,"while ("+args+"):");
+			}
 		}
 		if(a[i].indexOf("if")>-1){
-			var stmt=a[i].match(/if(.*)\S/)[0];
-			var args=stmt.replace("if","").replace(":","");
-			a[i]=a[i].replace(stmt,"if ("+args+"):");
+			var stmt=a[i].match(/if(.*)\S/);
+			if(stmt){
+				stmt=stmt[0];
+				var args=stmt.replace("if","").replace(":","");
+				a[i]=a[i].replace(stmt,"if ("+args+"):");
+			}
 		}
 		tempa+=a[i]+"\n";
 	}
