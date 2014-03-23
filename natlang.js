@@ -4,7 +4,13 @@ function replacer(a){
 	a=a.replace(/ times /g," * ");
 	a=a.replace(/ divided by /g," / ");
 	a=a.replace(/ as long as /g," while ");
-	
+	a=a.split("\n");
+	//aloks stuff here(a is now a list)
+	var tempa="";
+	for(var i in a){
+		tempa+=i+"\n";
+	}
+	a=tempa;
 	return(a);
 }
 function change(a){
