@@ -23,6 +23,9 @@ function replacer(a){
 			}
 		}
 		if(a[i].indexOf("until")>-1){
+                        if(a[i].match(/[^=]=[^=]/)){
+				a[i].replace("=","==");
+			}
 			var stmt=a[i].match(/until(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
@@ -31,6 +34,9 @@ function replacer(a){
 			}
 		}
 		if(a[i].indexOf("while")>-1){
+                        if(a[i].match(/[^=]=[^=]/)){
+				a[i].replace("=","==");
+			}
 			var stmt=a[i].match(/while(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
