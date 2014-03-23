@@ -3,7 +3,11 @@ function replacer(a){
 	a = a.replace(/ minus /g," - ");
 	a = a.replace(/ times /g," * ");
 	a = a.replace(/ divided by /g," / ");
-	a = a.replace(/as long as /g," while ");
+	a = a.replace(/as long as /g,"while ");
+	a = a.replace(/set /g,"");
+	a =a.replace(/let /g, "");
+	a =a.replace(/equal to /g, "=");
+    
 	a = a.split("\n");
 	//aloks stuff here(a is now a list)
 	var tempa = "";
@@ -35,6 +39,9 @@ function replacer(a){
 			}
 		}
 		if(a[i].indexOf("if")>-1){
+                        if(a[i].match(/[^=]=[^=]/)){
+				a[i].replace("=","==");
+			}
 			var stmt=a[i].match(/if(.*)\S/);
 			if(stmt){
 				stmt=stmt[0];
