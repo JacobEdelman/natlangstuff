@@ -1,7 +1,10 @@
 function replacer(a){
 	a=a.replace(/ plus /g," + ");
-	a=a.replace(/ plus /g," + ");
-	a=a.replace(/ plus /g," + ");
+	a=a.replace(/ minus /g," - ");
+	a=a.replace(/ times /g," * ");
+	a=a.replace(/ divided by /g," / ");
+	a=a.replace(/ as long as /g," while ");
+	
 	return(a);
 }
 function change(a){
