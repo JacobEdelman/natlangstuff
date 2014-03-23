@@ -4,7 +4,6 @@ function replacer(a){
 	a = a.replace(/ times /g," * ");
 	a = a.replace(/ divided by /g," / ");
 	a = a.replace(/as long as /g,"while ");
-<<<<<<< HEAD
 	a = a.replace(/\nset /g,"");
 	a =a.replace(/\nlet /g, "");
 	a =a.replace(/\nchange /g, "");
@@ -25,17 +24,12 @@ function replacer(a){
     	a =a.replace(/ equals /g, "=");
 	a =a.replace(/ to /g, "=");
 	a =a.replace(/ is in /g, " in ");
-=======
-	a = a.replace(/set /g,"");
-	a =a.replace(/let /g, "");
 	a =a.replace(/ is equal to /g, "==");
-	a =a.replace(/ equal to /g, "==");
 	a =a.replace(/ is greater than or equal to/g, ">=");
 	a =a.replace(/ is greater than /g, ">");
 	a =a.replace(/ is less than or equa to /g, "<=");
 	a =a.replace(/ is less than /g, "<");
     
->>>>>>> 962f6ca83977abea504e770430d8ab098512e396
 	a = a.split("\n");
 	//aloks stuff here(a is now a list)
 	var tempa = "";
