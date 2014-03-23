@@ -4,15 +4,30 @@ function replacer(a){
 	a = a.replace(/ times /g," * ");
 	a = a.replace(/ divided by /g," / ");
 	a = a.replace(/as long as /g,"while ");
-	a = a.replace(/set /g,"");
-	a =a.replace(/let /g, "");
-	a =a.replace(/equal to /g, "=");
-    
+	a = a.replace(/\nset /g,"");
+	a =a.replace(/\nlet /g, "");
+	a =a.replace(/\nchange /g, "");
+	a =a.replace(/\nas long as /g, "\nwhile ");
+	a = a.replace(/\tset /g,"");
+	a =a.replace(/\tlet /g, "");
+	a =a.replace(/\tchange /g, "");
+	a =a.replace(/\tas long as /g, "\twhile ")
+	a = a.replace(/ set /g,"");
+	a =a.replace(/ let /g, "");
+	a =a.replace(/ change /g, "");
+	a =a.replace(/ as long as /g, " while ");
+	a = a.replace(/^set /g,"");
+	a =a.replace(/^let /g, "");
+	a =a.replace(/^change /g, "");
+	a =a.replace(/^as long as /g, " while ");
+	a =a.replace(/ equal to /g, "=");
+    	a =a.replace(/ equals /g, "=");
+	a =a.replace(/ to /g, "=");
+	a =a.replace(/ is in /g, " in ");
 	a = a.split("\n");
 	//aloks stuff here(a is now a list)
 	var tempa = "";
 	for(var i in a){
-        console.log(a[i]);
 		if(a[i].indexOf("loop")>-1){
 			var stmt=a[i].match(/loop(.*)\S/);
 			if(stmt){
