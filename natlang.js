@@ -1,3 +1,4 @@
+
 function replacer(a){
 	a=a.replace(/ plus /g," + ");
 	a=a.replace(/ minus /g," - ");
@@ -8,9 +9,13 @@ function replacer(a){
 	//aloks stuff here(a is now a list)
 	var tempa="";
 	for(var i in a){
+		if(i.indexOf("loop")>-1){
+			var stmt=i.match(/loop(.*)\S/);
+			var args=stmt.replace("loop","");
+			i.replace(stmt,"for iiii in range("+args+"):");
+		}
 		tempa+=i+"\n";
 	}
-	a=tempa;
 	return(a);
 }
 function change(a){

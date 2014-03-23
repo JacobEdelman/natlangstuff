@@ -1,10 +1,26 @@
+
 function replacer(a){
 	a=a.replace(/ plus /g," + ");
 	a=a.replace(/ minus /g," - ");
 	a=a.replace(/ times /g," * ");
 	a=a.replace(/ divided by /g," / ");
 	a=a.replace(/ as long as /g," while ");
-	
+	a=a.split("\n");
+	//aloks stuff here(a is now a list)
+	var tempa="";
+	for(var i in a){
+		tempa+=i+"\n";
+	}
+	a=tempa;
+	a=a.split("\n");
+	for(var i in a){
+		if(i.indexOf("loop")>-1){
+			
+			var stmt=i.match(/loop(.*)\S/);
+			var args=stmt.replace("loop","");
+			i.replace(stmt,"for iiii in range("+args+"):");
+		}
+	}
 	return(a);
 }
 function change(a){
