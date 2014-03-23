@@ -1,5 +1,7 @@
 function replacer(a){
 	a=a.replace(/ plus /g," + ");
+	a=a.replace(/ plus /g," + ");
+	a=a.replace(/ plus /g," + ");
 	return(a);
 }
 function change(a){
