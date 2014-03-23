@@ -3,9 +3,8 @@ function replacer(a){
 	a = a.replace(/ minus /g," - ");
 	a = a.replace(/ times /g," * ");
 	a = a.replace(/ divided by /g," / ");
-	a = a.replace(/ as long as /g," while ");
+	a = a.replace(/as long as /g," while ");
 	a = a.split("\n");
-    console.log(a);
 	//aloks stuff here(a is now a list)
 	var tempa = "";
 	for(var i in a){
@@ -14,7 +13,17 @@ function replacer(a){
 			var stmt=a[i].match(/loop(.*)\S/)[0];
 			var args=stmt.replace("loop","").replace(":","");
 			a[i]=a[i].replace(stmt,"for iiii in range("+args+"):");
-		}console.log(a[i]);
+		}
+		if(a[i].indexOf("until")>-1){
+			var stmt=a[i].match(/until(.*)\S/)[0];
+			var args=stmt.replace("until","").replace(":","");
+			a[i]=a[i].replace(stmt,"while not ("+args+"):");
+		}
+		if(a[i].indexOf("while")>-1){
+			var stmt=a[i].match(/until(.*)\S/)[0];
+			var args=stmt.replace("while","").replace(":","");
+			a[i]=a[i].replace(stmt,"while ("+args+"):");
+		}
 		tempa+=a[i]+"\n";
 	}
 	
