@@ -29,6 +29,8 @@ function replacer(a){
 	a =a.replace(/ is greater than /g, ">");
 	a =a.replace(/ is less than or equa to /g, "<=");
 	a =a.replace(/ is less than /g, "<");
+	a =a.replace(/ is true /g, " = true ");
+	a =a.replace(/ is fales /g, "= false ");
     
 	a = a.split("\n");
 	//aloks stuff here(a is now a list)
