@@ -70,7 +70,7 @@ function replacer(a){
 			if(stmt){
 				stmt=stmt[0];
 				var stmt=a[i].match(/\swhile\s(.*)\S/)[0];
-				var bit=a[i].match(/\swhile\s/).index+1l
+				var bit=a[i].match(/\swhile\s/).index+1;
 				stmt2=stmt.substring(1,bit)+stmt.substring(bit+5);
 				var args=stmt2.replace(":","");
 				a[i]=a[i].replace(stmt,"while ("+args+"):");
